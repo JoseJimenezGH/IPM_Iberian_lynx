@@ -297,15 +297,15 @@ Code <- nimbleCode({
     log(mr3M[t]) <- mu.mr3M + ep.mr3M[t] # road-kill mortality hazard rate adult
     log(mo3M[t]) <- mu.mo3M + ep.mo3M[t] # Background mortality hazard rate adult    
     # Survival	    
-	s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
+    s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
     s2M[t] <- exp(-(mr2M[t] + mo2M[t]))
     s3M[t] <- exp(-(mr3M[t] + mo3M[t]))
     # Roadkill mortality  
-	rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
+    rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
     rk2M[t] <- (1 - s2M[t]) * (mr2M[t] / (mr2M[t] + mo2M[t]))
     rk3M[t] <- (1 - s3M[t]) * (mr3M[t] / (mr3M[t] + mo3M[t]))
     # Background mortality    
-	o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
+    o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
     o2M[t]  <- (1 - s2M[t]) * (mo2M[t] / (mr2M[t] + mo2M[t]))
     o3M[t]  <- (1 - s3M[t]) * (mo3M[t] / (mr3M[t] + mo3M[t]))
     # Random effects	
@@ -321,10 +321,10 @@ Code <- nimbleCode({
   for (t in 1:(n.occasions-1)){ 
     for(s in 1:2){
       # Non-philopatry/not remain in release area
-	  nonPhiF[s,t] <- mean.nonPhiF[s]  # Females that moved to an area other than the natal (or released) area      
+      nonPhiF[s,t] <- mean.nonPhiF[s]  # Females that moved to an area other than the natal (or released) area      
       nonPhiM[s,t] <- mean.nonPhiM[s]  # Males that moved to an area other than the natal (or released) area
       # Fidelity
-	  FF[s,t] <- mean.FF[s]   # Female fidelity to the study area
+      FF[s,t] <- mean.FF[s]   # Female fidelity to the study area
       FM[s,t] <- mean.FM[s]   # Male fidelity to the study area
     }
   }
@@ -354,7 +354,7 @@ Code <- nimbleCode({
 
   for(s in 1:2){ # 1: wild-born; 2: released
     # Detection
-	mean.p[s] ~ dunif(0, 1) 
+    mean.p[s] ~ dunif(0, 1) 
     mu.p[s] <- log(mean.p[s] /(1-mean.p[s]))
     sigma.p[s] ~ dunif(0,5)  
     
@@ -668,7 +668,7 @@ Code <- nimbleCode({
   # Define state-transition and re-encounter probabilities
   for (t in 1:(n.occasions-1)){ 
       
-	  # Group 1 (wild born)
+      # Group 1 (wild born)
       ps1F[1,1,t] <- 0
       ps1F[1,2,t] <- s1F[t]
       ps1F[1,3,t] <- 0
@@ -1019,7 +1019,7 @@ Code <- nimbleCode({
   # Define state-transition and re-encounter probabilities for males
   for (t in 1:(n.occasions-1)){ 
   
- 	  # Group 1 (wild-born)
+      # Group 1 (wild-born)
       ps1M[1,1,t] <- 0
       ps1M[1,2,t] <- s1M[t]
       ps1M[1,3,t] <- 0
@@ -1540,7 +1540,6 @@ params <- c('Dd.obs','Dd.rep',
             'f2im','f2wb','f2rs','n2im','n2wb','n2rs','n1wb')
 
 Rmodel <- nimbleModel(code=Code, constants=constants, data=data, inits=Inits, check=FALSE, calculate=FALSE)
-
 # Function to initialize complex nodes
 InitNod<-function(simNodes){
   simNodeScalar <- Rmodel$expandNodeNames(simNodes)
@@ -1553,20 +1552,17 @@ InitNod<-function(simNodes){
     Rmodel$calculate(depNodes)
   }
 }
-
 InitNod(simNodes = 'IF')
 Rmodel$IF
 InitNod(simNodes = 'IM')
 Rmodel$IM
 
 Rmodel$initializeInfo()
-
 Cmodel <- compileNimble(Rmodel)
 conf<-configureMCMC(Rmodel, monitors = params, useConjugacy=FALSE, enableWAIC = TRUE, thin=25)
 		  
 MCMC <- buildMCMC(conf)
 Cmcmc <- compileNimble(MCMC, project = Rmodel)
-
 
 nb = 100000
 ni = 350000 + nb
@@ -1577,7 +1573,6 @@ outNim <- runMCMC(Cmcmc, niter = ni , nburnin = nb , nchains = nc, inits=Inits,
                   WAIC = TRUE)
 end.time<-Sys.time()
 end.time-start.time2 # running time
-
 
 summary(mcmcOutput(outNim))
 diagPlot(mcmcOutput(outNim))
