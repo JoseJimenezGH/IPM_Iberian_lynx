@@ -3,7 +3,7 @@
 #                    IBERIAN LYNX INTEGRATED POPULATION MODEL                  #
 #                            ~~~ Lynx pardinus ~~~                             #
 #       José Jiménez, Matías Taborda, Pablo Ferreras, Maria Jesús Palacios,    #
-#        Fernando David Nájera, Jorge Peña, Marc Kéry and Michael Schaub       # 
+#              Fernando Nájera, Jorge Peña, Marc Kéry and Michael Schaub       # 
 #                            09/08/2023 9:41:42                                #
 #                                                                              #
 #==============================================================================#
