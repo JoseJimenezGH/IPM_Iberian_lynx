@@ -8,7 +8,7 @@
 #                                                                              #
 #==============================================================================#
 
-# packages
+# Load packages
 library(IPMbook)
 library(MCMCvis)
 library(nimble)
