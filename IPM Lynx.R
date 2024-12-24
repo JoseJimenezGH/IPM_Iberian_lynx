@@ -14,7 +14,7 @@ library(MCMCvis)
 library(nimble)
 library(mcmcOutput)
 
-setwd('C:/Users/Jose/OneDrive/01 IPM Lince/01 data/dataDEF')
+setwd('C:/...')
 
 bdataH <- read.csv('females.csv', header=TRUE, sep=";")
 bdataH<-bdataH[bdataH$Tras=='0',]
@@ -28,7 +28,6 @@ CH1[CH1==12] <- 0
 
 # Compute the multistate m-array from the individual capture histories, including one unobservable state
 marrF <- marray(CH1, unobs=1, groups=suelta1)
-
 
 bdataM <- read.csv('males.csv', header=TRUE, sep=";")
 bdataM<-bdataM[bdataM$Tras=='0',]
