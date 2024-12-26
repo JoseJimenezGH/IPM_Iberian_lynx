@@ -1538,8 +1538,7 @@ params <- c('Dd.obs','Dd.rep',
             'sigma.mr2M','sigma.mr3M','sigma.mo2M','sigma.mo3M',
             'sigma.delta','sigma.fec',
             'sigma.p',
-            'sigma.y1','sigma.y2','N.nonPhiwb','N.nonPhiRs','N.Phiwb','N.PhiRs',
-            'f2im','f2wb','f2rs','n2im','n2wb','n2rs','n1wb')
+            'sigma.y1','sigma.y2','N.nonPhiwb','N.nonPhiRs','N.Phiwb','N.PhiRs','n1wb')
 
 Rmodel <- nimbleModel(code=Code, constants=constants, data=data, inits=Inits, check=FALSE, calculate=FALSE)
 
