@@ -670,7 +670,7 @@ Code <- nimbleCode({
   # Define state-transition and re-encounter probabilities
   for (t in 1:(n.occasions-1)){ 
       
-	  # Group 1 (wild born)
+      # Group 1 (wild born)
       ps1F[1,1,t] <- 0
       ps1F[1,2,t] <- s1F[t]
       ps1F[1,3,t] <- 0
