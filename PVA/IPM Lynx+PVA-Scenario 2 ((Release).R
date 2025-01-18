@@ -269,7 +269,7 @@ Code <- nimbleCode({
     log(mr3F[t]) <- mu.mr3F + ep.mr3F[t] # road-kill mortality hazard rate adult
     log(mo3F[t]) <- mu.mo3F + ep.mo3F[t] # Background mortality hazard rate adult
     # Survival	   
-	s1F[t] <- exp(-(mr1F[t] + mo1F[t])) 
+    s1F[t] <- exp(-(mr1F[t] + mo1F[t])) 
     s2F[t] <- exp(-(mr2F[t] + mo2F[t]))
     s3F[t] <- exp(-(mr3F[t] + mo3F[t]))
     # Roadkill mortality  	
@@ -277,7 +277,7 @@ Code <- nimbleCode({
     rk2F[t] <- (1 - s2F[t]) * (mr2F[t] / (mr2F[t] + mo2F[t]))
     rk3F[t] <- (1 - s3F[t]) * (mr3F[t] / (mr3F[t] + mo3F[t]))
     # Background mortality    
-	o1F[t]  <- (1 - s1F[t]) * (mo1F[t] / (mr1F[t] + mo1F[t]))
+    o1F[t]  <- (1 - s1F[t]) * (mo1F[t] / (mr1F[t] + mo1F[t]))
     o2F[t]  <- (1 - s2F[t]) * (mo2F[t] / (mr2F[t] + mo2F[t]))
     o3F[t]  <- (1 - s3F[t]) * (mo3F[t] / (mr3F[t] + mo3F[t]))
     # Random effects	
@@ -531,7 +531,7 @@ Code <- nimbleCode({
 
   # Derived quantities
   for (t in 1:(n.occasions+K)) {
-    N1[t] <- n1wb[t] + RsF[t] +IF[t]        # 1-year old
+    N1[t] <- n1wb[t] + RsF[t] + IF[t]       # 1-year old
     N2[t] <- n2wb[t] + n2rs[t] + n2im[t]    # 2-years old that have never reproduced
     F2[t] <- f2wb[t] + f2rs[t] + f2im[t]    # 2-years old that reproduced for the first time
     N2T[t] <- N2[t]+F2[t]
@@ -601,7 +601,7 @@ Code <- nimbleCode({
     N1M[t] <- n1wbM[t] + RsM[t] + IM[t]          # 1-year old
     N2wb[t] <- N.nonPhiwbM[t] + N.PhiwbM[t]
     N2Rs[t] <- N.nonPhiRsM[t] + N.PhiRsM[t]
-	N2M[t] <- N2wb[t] + N2Rs[t] + nim[t]     # 2-years old
+    N2M[t] <- N2wb[t] + N2Rs[t] + nim[t]     # 2-years old
     NtM[t]<- N1M[t] + N2M[t] + N3M[t]
     # Population size (F&M)
     NT[t] <- NtH[t] + NtM[t]
@@ -1326,7 +1326,7 @@ Jm       <-  c(  0,   4,   3,    3,    9,   20,   20,   20,   29,   34)
 Jf       <-  c(  0,   2,   3,    4,   11,   17,   26,   20,   24,   31) 
 
 # Tf     <-  c(  3,   5,  10,   14,   18,   33,   42,   56,   63,   75,  86)  # Total females
-# Tm     <-  c(  4,	  4,   9,	15,	  20,	30,	  47,	49,	  65,	73,	 69)  # Total males
+# Tm     <-  c(  4,   4,   9,	15,   20,   30,	  47,	49,   65,   73,	 69)  # Total males
 
 CimM     <-  c(  0,   0,   1,    1,    1,    0,    0,    0,    0,    0,   0)
 CimF     <-  c(  0,   0,   0,    0,    0,    1,    0,    0,    0,    0,   0)
@@ -1338,15 +1338,15 @@ K <- 15
 str(data    <-     list(marrF=marrF,
                         marrM=marrM,
                         C.FRep = C.FRep,
-						C.Mrep = C.Mrep ,
+			C.Mrep = C.Mrep ,
                         mean.C = mean.C,					
                         J=J,
-						Jm=sum(Jm),
-						Jf=sum(Jf),
+			Jm=sum(Jm),
+			Jf=sum(Jf),
                         CimM=CimM,
                         CimF=CimF,
                         R1=57,
-						R2=16,
+			R2=16,
                         RsF=c(RsF, rep(5,K)),
                         RsM=c(RsM, rep(5,K))))
 
