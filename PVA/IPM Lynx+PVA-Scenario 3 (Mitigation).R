@@ -299,15 +299,15 @@ Code <- nimbleCode({
     log(mr3M[t]) <- mu.mr3M + ep.mr3M[t] # road-kill mortality hazard rate adult
     log(mo3M[t]) <- mu.mo3M + ep.mo3M[t] # Background mortality hazard rate adult    
     # Survival	    
-	s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
+    s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
     s2M[t] <- exp(-(mr2M[t] + mo2M[t]))
     s3M[t] <- exp(-(mr3M[t] + mo3M[t]))
     # Roadkill mortality  
-	rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
+    rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
     rk2M[t] <- (1 - s2M[t]) * (mr2M[t] / (mr2M[t] + mo2M[t]))
     rk3M[t] <- (1 - s3M[t]) * (mr3M[t] / (mr3M[t] + mo3M[t]))
     # Background mortality    
-	o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
+    o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
     o2M[t]  <- (1 - s2M[t]) * (mo2M[t] / (mr2M[t] + mo2M[t]))
     o3M[t]  <- (1 - s3M[t]) * (mo3M[t] / (mr3M[t] + mo3M[t]))
     # Random effects	
@@ -1386,7 +1386,7 @@ Jm       <-  c(  0,   4,   3,    3,    9,   20,   20,   20,   29,   34)
 Jf       <-  c(  0,   2,   3,    4,   11,   17,   26,   20,   24,   31) 
 
 # Tf     <-  c(  3,   5,  10,   14,   18,   33,   42,   56,   63,   75,  86)  # Total females
-# Tm     <-  c(  4,	  4,   9,	15,	  20,	30,	  47,	49,	  65,	73,	 69)  # Total males
+# Tm     <-  c(  4,   4,   9,	15,   20,   30,	  47,	49,   65,   73,	 69)  # Total males
 
 CimM     <-  c(  0,   0,   1,    1,    1,    0,    0,    0,    0,    0,   0)
 CimF     <-  c(  0,   0,   0,    0,    0,    1,    0,    0,    0,    0,   0)
