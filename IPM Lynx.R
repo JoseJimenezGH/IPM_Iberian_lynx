@@ -523,7 +523,7 @@ Code <- nimbleCode({
   
   # Derived quantities
   for (t in 1:n.occasions) {
-    N1[t] <- n1wb[t] + RsF[t]               # 1-year old
+    N1[t] <- n1wb[t] + RsF[t] + IF[t]       # 1-year old
     N2[t] <- n2wb[t] + n2rs[t] + n2im[t]    # 2-years old that have never reproduced
     F2[t] <- f2wb[t] + f2rs[t] + f2im[t]    # 2-years old that reproduced for the first time
     N2T[t] <- N2[t]+F2[t]
@@ -586,7 +586,7 @@ Code <- nimbleCode({
 
   # Derived quantities
   for (t in 1:n.occasions) {
-    N1M[t] <- n1wbM[t] + RsM[t]              # 1-year old
+    N1M[t] <- n1wbM[t] + RsM[t] + IM[t]      # 1-year old
     N2wb[t] <- N.nonPhiwbM[t] + N.PhiwbM[t]
     N2Rs[t] <- N.nonPhiRsM[t] + N.PhiRsM[t]
     N2M[t] <- N2wb[t] + N2Rs[t] + nim[t]     # 2-years old
