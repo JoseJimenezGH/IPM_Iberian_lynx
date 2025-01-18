@@ -15,7 +15,7 @@ library(MCMCvis)
 library(nimble)
 library(mcmcOutput)
 
-setwd('C:/Users/Jose/OneDrive/01 IPM Lince/01 data/dataDEF')
+setwd('...')
 
 bdataH <- read.csv('females.csv', header=TRUE, sep=";")
 bdataH<-bdataH[bdataH$Tras=='0',]
@@ -270,7 +270,7 @@ Code <- nimbleCode({
     log(mr3F[t]) <- mu.mr3F + ep.mr3F[t] # road-kill mortality hazard rate adult
     log(mo3F[t]) <- mu.mo3F + ep.mo3F[t] # Background mortality hazard rate adult
     # Survival	   
-	s1F[t] <- exp(-(mr1F[t] + mo1F[t])) 
+    s1F[t] <- exp(-(mr1F[t] + mo1F[t])) 
     s2F[t] <- exp(-(mr2F[t] + mo2F[t]))
     s3F[t] <- exp(-(mr3F[t] + mo3F[t]))
     # Roadkill mortality  	
@@ -278,7 +278,7 @@ Code <- nimbleCode({
     rk2F[t] <- (1 - s2F[t]) * (mr2F[t] / (mr2F[t] + mo2F[t]))
     rk3F[t] <- (1 - s3F[t]) * (mr3F[t] / (mr3F[t] + mo3F[t]))
     # Background mortality    
-	o1F[t]  <- (1 - s1F[t]) * (mo1F[t] / (mr1F[t] + mo1F[t]))
+    o1F[t]  <- (1 - s1F[t]) * (mo1F[t] / (mr1F[t] + mo1F[t]))
     o2F[t]  <- (1 - s2F[t]) * (mo2F[t] / (mr2F[t] + mo2F[t]))
     o3F[t]  <- (1 - s3F[t]) * (mo3F[t] / (mr3F[t] + mo3F[t]))
     # Random effects	
@@ -299,15 +299,15 @@ Code <- nimbleCode({
     log(mr3M[t]) <- mu.mr3M + ep.mr3M[t] # road-kill mortality hazard rate adult
     log(mo3M[t]) <- mu.mo3M + ep.mo3M[t] # Background mortality hazard rate adult    
     # Survival	    
-	s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
+    s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
     s2M[t] <- exp(-(mr2M[t] + mo2M[t]))
     s3M[t] <- exp(-(mr3M[t] + mo3M[t]))
     # Roadkill mortality  
-	rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
+    rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
     rk2M[t] <- (1 - s2M[t]) * (mr2M[t] / (mr2M[t] + mo2M[t]))
     rk3M[t] <- (1 - s3M[t]) * (mr3M[t] / (mr3M[t] + mo3M[t]))
     # Background mortality    
-	o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
+    o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
     o2M[t]  <- (1 - s2M[t]) * (mo2M[t] / (mr2M[t] + mo2M[t]))
     o3M[t]  <- (1 - s3M[t]) * (mo3M[t] / (mr3M[t] + mo3M[t]))
     # Random effects	
@@ -330,7 +330,7 @@ Code <- nimbleCode({
     mr3F[t] <- 0.5*exp(mu.mr3F + ep.mr3F[t]) # road-kill mortality hazard rate adult
     log(mo3F[t]) <- mu.mo3F + ep.mo3F[t] # Background mortality hazard rate adult
     # Survival	   
-	s1F[t] <- exp(-(mr1F[t] + mo1F[t])) 
+    s1F[t] <- exp(-(mr1F[t] + mo1F[t])) 
     s2F[t] <- exp(-(mr2F[t] + mo2F[t]))
     s3F[t] <- exp(-(mr3F[t] + mo3F[t]))
     # Roadkill mortality  	
@@ -338,7 +338,7 @@ Code <- nimbleCode({
     rk2F[t] <- (1 - s2F[t]) * (mr2F[t] / (mr2F[t] + mo2F[t]))
     rk3F[t] <- (1 - s3F[t]) * (mr3F[t] / (mr3F[t] + mo3F[t]))
     # Background mortality    
-	o1F[t]  <- (1 - s1F[t]) * (mo1F[t] / (mr1F[t] + mo1F[t]))
+    o1F[t]  <- (1 - s1F[t]) * (mo1F[t] / (mr1F[t] + mo1F[t]))
     o2F[t]  <- (1 - s2F[t]) * (mo2F[t] / (mr2F[t] + mo2F[t]))
     o3F[t]  <- (1 - s3F[t]) * (mo3F[t] / (mr3F[t] + mo3F[t]))
     # Random effects	
@@ -359,15 +359,15 @@ Code <- nimbleCode({
     mr3M[t] <- 0.5*exp(mu.mr3M + ep.mr3M[t]) # road-kill mortality hazard rate adult
     log(mo3M[t]) <- mu.mo3M + ep.mo3M[t] # Background mortality hazard rate adult    
     # Survival	    
-	s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
+    s1M[t] <- exp(-(mr1M[t] + mo1M[t])) 
     s2M[t] <- exp(-(mr2M[t] + mo2M[t]))
     s3M[t] <- exp(-(mr3M[t] + mo3M[t]))
     # Roadkill mortality  
-	rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
+    rk1M[t] <- (1 - s1M[t]) * (mr1M[t] / (mr1M[t] + mo1M[t]))
     rk2M[t] <- (1 - s2M[t]) * (mr2M[t] / (mr2M[t] + mo2M[t]))
     rk3M[t] <- (1 - s3M[t]) * (mr3M[t] / (mr3M[t] + mo3M[t]))
     # Background mortality    
-	o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
+    o1M[t]  <- (1 - s1M[t]) * (mo1M[t] / (mr1M[t] + mo1M[t]))
     o2M[t]  <- (1 - s2M[t]) * (mo2M[t] / (mr2M[t] + mo2M[t]))
     o3M[t]  <- (1 - s3M[t]) * (mo3M[t] / (mr3M[t] + mo3M[t]))
     # Random effects	
@@ -383,10 +383,10 @@ Code <- nimbleCode({
   for (t in 1:(n.occasions-1+K)){ 
     for(s in 1:2){
       # Non-philopatry/not remain in release area
-	  nonPhiF[s,t] <- mean.nonPhiF[s]  # Females that moved to an area other than the natal (or released) area      
+      nonPhiF[s,t] <- mean.nonPhiF[s]  # Females that moved to an area other than the natal (or released) area      
       nonPhiM[s,t] <- mean.nonPhiM[s]  # Males that moved to an area other than the natal (or released) area
       # Fidelity
-	  FF[s,t] <- mean.FF[s]   # Female fidelity to the study area
+      FF[s,t] <- mean.FF[s]   # Female fidelity to the study area
       FM[s,t] <- mean.FM[s]   # Male fidelity to the study area
     }
   }
@@ -406,17 +406,17 @@ Code <- nimbleCode({
   for(s in 1:2){ # 1: wild-born; 2: released
     for (t in 1:(n.occasions-1+K)){ 
       # Detection
-	  logit(p[s,t]) <- mu.p[s] + ep.p[s,t]    
+      logit(p[s,t]) <- mu.p[s] + ep.p[s,t]    
       ep.p[s,t] ~ T(dnorm(0, sd=sigma.p[s]),-10,10)      
       # Recovery
-	  rF[s,t] <- mean.rF[s]
+      rF[s,t] <- mean.rF[s]
       rM[s,t] <- mean.rM[s]
     }	  
   }
 
   for(s in 1:2){ # 1: wild-born; 2: released
     # Detection
-	mean.p[s] ~ dunif(0, 1) 
+    mean.p[s] ~ dunif(0, 1) 
     mu.p[s] <- log(mean.p[s] /(1-mean.p[s]))
     sigma.p[s] ~ dunif(0,5)  
     
@@ -592,7 +592,7 @@ Code <- nimbleCode({
 
   # Derived quantities
   for (t in 1:(n.occasions+K)) {
-    N1[t] <- n1wb[t] + RsF[t]               # 1-year old
+    N1[t] <- n1wb[t] + RsF[t] + IF[t]       # 1-year old
     N2[t] <- n2wb[t] + n2rs[t] + n2im[t]    # 2-years old that have never reproduced
     F2[t] <- f2wb[t] + f2rs[t] + f2im[t]    # 2-years old that reproduced for the first time
     N2T[t] <- N2[t]+F2[t]
@@ -659,10 +659,10 @@ Code <- nimbleCode({
 
   # Derived quantities
   for (t in 1:(n.occasions+K)) {
-    N1M[t] <- n1wbM[t] + RsM[t]              # 1-year old
+    N1M[t] <- n1wbM[t] + RsM[t] + IM[t]      # 1-year old
     N2wb[t] <- N.nonPhiwbM[t] + N.PhiwbM[t]
     N2Rs[t] <- N.nonPhiRsM[t] + N.PhiRsM[t]
-	N2M[t] <- N2wb[t] + N2Rs[t] + nim[t]     # 2-years old
+    N2M[t] <- N2wb[t] + N2Rs[t] + nim[t]     # 2-years old
     NtM[t]<- N1M[t] + N2M[t] + N3M[t]
     # Population size (F&M)
     NT[t] <- NtH[t] + NtM[t]
@@ -684,7 +684,7 @@ Code <- nimbleCode({
   # Define state-transition and re-encounter probabilities
   for (t in 1:(n.occasions-1)){ 
       
-	  # Group 1 (wild born)
+      # Group 1 (wild born)
       ps1F[1,1,t] <- 0
       ps1F[1,2,t] <- s1F[t]
       ps1F[1,3,t] <- 0
@@ -1036,7 +1036,7 @@ Code <- nimbleCode({
   # Define state-transition and re-encounter probabilities for males
   for (t in 1:(n.occasions-1)){ 
   
- 	  # Group 1 (wild-born)
+      # Group 1 (wild-born)
       ps1M[1,1,t] <- 0
       ps1M[1,2,t] <- s1M[t]
       ps1M[1,3,t] <- 0
@@ -1387,7 +1387,7 @@ Jm       <-  c(  0,   4,   3,    3,    9,   20,   20,   20,   29,   34)
 Jf       <-  c(  0,   2,   3,    4,   11,   17,   26,   20,   24,   31) 
 
 # Tf     <-  c(  3,   5,  10,   14,   18,   33,   42,   56,   63,   75,  86)  # Total females
-# Tm     <-  c(  4,	  4,   9,	15,	  20,	30,	  47,	49,	  65,	73,	 69)  # Total males
+# Tm     <-  c(  4,   4,   9,	15,   20,   30,	  47,	49,   65,   73,	 69)  # Total males
 
 CimM     <-  c(  0,   0,   1,    1,    1,    0,    0,    0,    0,    0,   0)
 CimF     <-  c(  0,   0,   0,    0,    0,    1,    0,    0,    0,    0,   0)
@@ -1400,15 +1400,15 @@ K <- 15
 str(data    <-     list(marrF=marrF,
                         marrM=marrM,
                         C.FRep = C.FRep,
-						C.Mrep = C.Mrep ,
+			C.Mrep = C.Mrep ,
                         mean.C = mean.C,					
                         J=J,
-						Jm=sum(Jm),
-						Jf=sum(Jf),
+			Jm=sum(Jm),
+			Jf=sum(Jf),
                         CimM=CimM,
                         CimF=CimF,
                         R1=57,
-						R2=16,
+			R2=16,
                         RsF=c(RsF, rep(0,K)),
                         RsM=c(RsM, rep(0,K))))
 
@@ -1540,62 +1540,3 @@ outNim <- runMCMC(Cmcmc, niter = ni , nburnin = nb , nchains = nc, #inits=Inits,
                   WAIC = TRUE)
 end.time<-Sys.time()
 end.time-start.time2 # running time
-
-save(outNim, file="outNim_PVA_CC+Roads.RData")
-
-outNim$WAIC
-
-
-###########################
-
-mc<-mcmcOutput(outNim$samples)
-summary(mc)
-# diagPlot(mc)
-
-
-# FEMALES  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-medias1<-apply(as.matrix(outNim$samples[,c(paste0("NtH[", 1:(11+K), "]"))]),2,mean)
-lower1 <- upper <- numeric()
-lower1 <- apply(as.matrix(outNim$samples[,c(paste0("NtH[", 1:(11+K), "]"))]),2,quantile,0.025)
-upper1 <- apply(as.matrix(outNim$samples[,c(paste0("NtH[", 1:(11+K), "]"))]),2,quantile,0.975)
-
-plot(2014:(2024+K), medias1, type = "p", ylim = c(0, 375),
-  cex.axis=0.85,  cex.lab=1.1,
-  ylab = "Population size", xlab = "Year", las = 1, pch = 16, col = "black",
-  cex = 1.5, font.lab=2, cex.lab=1.15)
-
-box( bty = "L") # Para que no haya hueco en el origen
-segments(2014:(2024+K), lower1, 2014:(2024+K), upper1, col = "black")
-
- 
-
-# MALES   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-medias2<-apply(as.matrix(outNim$samples[,c(paste0("NtM[", 1:(11+K), "]"))]),2,mean)
-lower2 <- upper <- numeric()
-lower2 <- apply(as.matrix(outNim$samples[,c(paste0("NtM[", 1:(11+K), "]"))]),2,quantile,0.025)
-upper2 <- apply(as.matrix(outNim$samples[,c(paste0("NtM[", 1:(11+K), "]"))]),2,quantile,0.975)
-
-points(2014.1:(2024.1+K), medias2, type = "p", ylim = c(0, 500),
-  cex.axis=0.85,  cex.lab=1.1,
-  ylab = "Population size", xlab = "Year", las = 1, pch = 16, col = "red",
-  cex = 1.5, font.lab=2, cex.lab=1.15)
-
-box( bty = "L") # Para que no haya hueco en el origen
-segments(2014.1:(2024.1+K), lower2, 2014.1:(2024.1+K), upper2, col = "red")
-
-
- 
-# BREEDER FEMALES   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-medias3<-apply(as.matrix(outNim$samples[,c(paste0("FRep[", 1:(11+K), "]"))]),2,mean)
-lower3 <- upper <- numeric()
-lower3 <- apply(as.matrix(outNim$samples[,c(paste0("FRep[", 1:(11+K), "]"))]),2,quantile,0.025)
-upper3 <- apply(as.matrix(outNim$samples[,c(paste0("FRep[", 1:(11+K), "]"))]),2,quantile,0.975)
-
-points(2014.2:(2024.2+K), medias3, type = "p", ylim = c(0, 500),
-  cex.axis=0.85,  cex.lab=1.1,
-  ylab = "Population size", xlab = "Year", las = 1, pch = 16, col = "blue",
-  cex = 1.5, font.lab=2, cex.lab=1.15)
-
-box( bty = "L") # Para que no haya hueco en el origen
-segments(2014.2:(2024.2+K), lower3, 2014.2:(2024.2+K), upper3, col = "blue")
-
