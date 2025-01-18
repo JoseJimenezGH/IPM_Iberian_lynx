@@ -15,7 +15,7 @@ library(MCMCvis)
 library(nimble)
 library(mcmcOutput)
 
-setwd('C:/Users/Jose_/OneDrive/01 IPM Lince/01 data/dataDEF')
+setwd('...')
 
 bdataH <- read.csv('females.csv', header=TRUE, sep=";")
 bdataH<-bdataH[bdataH$Tras=='0',]
@@ -345,17 +345,17 @@ Code <- nimbleCode({
   for(s in 1:2){ # 1: wild-born; 2: released
     for (t in 1:(n.occasions-1+K)){ 
       # Detection
-	  logit(p[s,t]) <- mu.p[s] + ep.p[s,t]    
+      logit(p[s,t]) <- mu.p[s] + ep.p[s,t]    
       ep.p[s,t] ~ T(dnorm(0, sd=sigma.p[s]),-10,10)      
       # Recovery
-	  rF[s,t] <- mean.rF[s]
+      rF[s,t] <- mean.rF[s]
       rM[s,t] <- mean.rM[s]
     }	  
   }
 
   for(s in 1:2){ # 1: wild-born; 2: released
     # Detection
-	mean.p[s] ~ dunif(0, 1) 
+    mean.p[s] ~ dunif(0, 1) 
     mu.p[s] <- log(mean.p[s] /(1-mean.p[s]))
     sigma.p[s] ~ dunif(0,5)  
     
@@ -531,7 +531,7 @@ Code <- nimbleCode({
 
   # Derived quantities
   for (t in 1:(n.occasions+K)) {
-    N1[t] <- n1wb[t] + RsF[t]               # 1-year old
+    N1[t] <- n1wb[t] + RsF[t] + IF[t]       # 1-year old
     N2[t] <- n2wb[t] + n2rs[t] + n2im[t]    # 2-years old that have never reproduced
     F2[t] <- f2wb[t] + f2rs[t] + f2im[t]    # 2-years old that reproduced for the first time
     N2T[t] <- N2[t]+F2[t]
@@ -598,7 +598,7 @@ Code <- nimbleCode({
 
   # Derived quantities
   for (t in 1:(n.occasions+K)) {
-    N1M[t] <- n1wbM[t] + RsM[t]              # 1-year old
+    N1M[t] <- n1wbM[t] + RsM[t] + IM[t]          # 1-year old
     N2wb[t] <- N.nonPhiwbM[t] + N.PhiwbM[t]
     N2Rs[t] <- N.nonPhiRsM[t] + N.PhiRsM[t]
 	N2M[t] <- N2wb[t] + N2Rs[t] + nim[t]     # 2-years old
