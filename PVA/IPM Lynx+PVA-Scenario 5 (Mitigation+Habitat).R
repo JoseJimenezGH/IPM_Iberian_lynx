@@ -1509,9 +1509,8 @@ conf<-configureMCMC(Rmodel, monitors = params, enableWAIC = TRUE, thin=5)
 MCMC <- buildMCMC(conf)
 Cmcmc <- compileNimble(MCMC, project = Rmodel)
 
-# MCMC settings
 nb = 50000
-ni = 50000 + nb
+ni = 300000 + nb
 nc = 3
 
 start.time2<-Sys.time()
