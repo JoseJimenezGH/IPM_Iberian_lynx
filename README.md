@@ -1,1 +1,1 @@
-Integrated population model (IPM) based on monitoring data (2014-2024) from the reintroduced Iberian lynx (_Lynx pardinus_) population in Extremadura, Spain. We performed population viability analyses to assess the impacts of various threats and management scenarios. 
+Integrated population model (IPM) based on monitoring data (2014-2024) from the reintroduced Iberian lynx (_Lynx pardinus_) population in Extremadura, Spain. We performed a viability analysis of the Iberian lynx population in Extremadura and evaluated different management scenarios.
