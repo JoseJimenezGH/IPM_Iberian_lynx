@@ -1449,7 +1449,7 @@ Cmcmc <- compileNimble(MCMC, project = Rmodel)
 
 # MCMC settings
 nb = 50000
-ni = 50000 + nb
+ni = 300000 + nb
 nc = 3
 start.time2<-Sys.time()
 outNim <- runMCMC(Cmcmc, niter = ni , nburnin = nb , nchains = nc, #inits=Inits,
